@@ -1,0 +1,29 @@
+# Flask-specific parts of.gitignore based off of https://flask.palletsprojects.com/en/2.2.x/tutorial/layout/#id2
+
+*.pyc
+__pycache__/
+
+instance/
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+dist/
+build/
+*.egg-info/
+
+# VS Code .gitignore based off of https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
+
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
