@@ -13,6 +13,6 @@ def create_app():
 
     @app.route('/')
     def hello_world():
-        return "hello world"
+        return "hello world, this is " + __name__
     
     return app
