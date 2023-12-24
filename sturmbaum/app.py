@@ -1,18 +1,14 @@
 from flask import Flask
 import os
+from . import sturmbaum
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)
-
-    # @TODO add testing configuration later
-
     try:
         os.makedirs(app.instance_path)
     except OSError:
         pass
 
-    @app.route('/')
-    def hello_world():
-        return "hello world, this is " + __name__
-    
+    app.register_blueprint(sturmbaum.sb)
+
     return app

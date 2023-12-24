@@ -1,0 +1,18 @@
+{% include "./partials/header.html.jinja" %}
+<title> Sturmbaum {% block title %}{% endblock %}</title>
+</head>
+
+<body class="d-flex flex-column h-100">
+    {% include "./partials/nav.html.jinja" %}
+    <main class="flex-shrink-0 mt-3">
+        <div class="container">
+            <h1 class="page-header">
+                {% block header %}{% endblock %}
+            </h1>
+            {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    {% include "./partials/footer.html.jinja" %}

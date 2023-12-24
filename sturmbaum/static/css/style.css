@@ -1,0 +1,87 @@
+/* CSS Variable overrides */
+:root {
+    --bs-link-color-rgb: #e78b32;
+    --bs-link-color-rgba: #d95229;
+    --bs-primary-rgb: #434b36;
+    --bs-secondary-rgb: #0a0e13;
+    --bs-body-font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --bs-tertiary-rgb: #6faeea;
+    --bs-tertiary-rgb-active: #1f6e56;
+    --bs-btn-hover-color: var(--bs-tertiary-rgb-active)
+}
+
+/* Global */
+
+::selection {
+    background: var(--bs-link-color-rgba)
+}
+
+body {
+    padding-top: 4.5rem;
+    font-family: var(--bs-body-font-family);
+    background: var(--bs-secondary-rgb)
+}
+
+html {
+    font-family: var(--bs-body-font-family)
+}
+
+a, a.nav-link {
+    color: var(--bs-link-color-rgb);
+    text-decoration: underline; 
+}
+
+mark {
+    background: var(--bs-link-color-rgba);
+}
+
+a.text-body-secondary i {
+    color: var(--bs-link-color-rgb);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+a:hover, 
+a:active {
+    text-decoration: none;
+}
+
+/* Page styles */
+.page-header {
+    text-align: center; 
+    font-weight: 800; 
+}
+
+.page-header {
+    font-size: calc(2rem + 3.3vw);
+  }
+  
+  @media (min-width: 1200px) {
+    .page-header {
+      font-size: 4rem;
+    }
+  }
+  
+
+/* Buttons */
+.btn.btn-primary {
+    background: var(--bs-tertiary-rgb);
+    border-color: var(--bs-tertiary-rgb);
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:target {
+    background: var(--bs-tertiary-rgb-active);
+    border-color: var(--bs-tertiary-rgb-active);
+}
+
+/* Navigation */
+nav, footer {
+    background: var(--bs-primary-rgb)
+}
+
+/* Footer */
+footer .bi-github,
+footer .bi-linkedin {
+    font-size: 1.75rem
+}
