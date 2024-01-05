@@ -1,13 +1,14 @@
 /* CSS Variable overrides */
 :root {
-    --bs-link-color-rgb: #e78b32;
+    --bs-link-color-rgb: #613d19;
     --bs-link-color-rgba: #d95229;
-    --bs-primary-rgb: #434b36;
-    --bs-secondary-rgb: #0a0e13;
+    --bs-link-hover-color-rgb: #d95229;
+    --bs-primary-rgb: #5989b6;
+    --bs-secondary-rgb: #161616;
     --bs-body-font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --bs-tertiary-rgb: #6faeea;
+    --bs-tertiary-rgb: #434b36;
     --bs-tertiary-rgb-active: #1f6e56;
-    --bs-btn-hover-color: var(--bs-tertiary-rgb-active)
+    --bs-btn-hover-color: var(--bs-tertiary-rgb-active);
 }
 
 /* Global */
@@ -41,8 +42,11 @@ a.text-body-secondary i {
 }
 
 a:hover, 
-a:active {
+a:active,
+.nav-link:hover,
+.nav-link:active {
     text-decoration: none;
+    color: var(--bs-link-color-rgba);
 }
 
 /* Page styles */
