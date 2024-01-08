@@ -28,4 +28,4 @@ build/
 # Built Visual Studio Code Extensions
 *.vsix
 
-node_modules
+**/node_modules
