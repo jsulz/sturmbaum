@@ -231,6 +231,7 @@ const CustomToolTip = ({active, payload, label}) => {
   if (active && payload && payload.length) {
     return(
       <div className="custom-tooltip">
+        <p>{payload[0]["payload"]["published"]}</p>
         <p>wind-speed: {payload[0]["payload"]["wind-speed"]}</p>
         <p>wind-speed: {payload[0]["payload"]["wind-direction"]}</p>
       </div>
