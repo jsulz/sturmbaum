@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {Line, LineChart, ReponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts'
 
 export default function Weather() {
     const [weatherData, setweatherData] = useState(WEATHERDATA)
+    useEffect(() => {
+      fetch('/sensor-data')
+        .then(response => response.json())
+        .then(json => console.log(json))
+    }, []);
+
     let transformedWeatherData = weatherData.map((row) => {
         return {...row, "published": dateStr(row["published"]), "wind-direction": windDir(row["wind-direction"]) }
     });
