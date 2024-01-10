@@ -29,13 +29,15 @@ def sensor_data():
     today = today.timestamp() - 57600
     print(today)
     with database.connect() as conn:
+        """
         stmt = (
             sqlalchemy.select(SensorData)
             .order_by(SensorData.published)
             .filter(SensorData.published > today)
         )
+        """
+        stmt = sqlalchemy.select(SensorData).order_by(SensorData.published)
         result = conn.execute(stmt).all()
-        print(result)
         final = []
         for row in conn.execute(stmt).all():
             final.append(
