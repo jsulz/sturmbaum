@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import {Line, LineChart, ReponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer} from 'recharts'
 
-export default function Weather() {
-    const [weatherData, setweatherData] = useState(WEATHERDATA)
+export default function Weather(props) {
+    const [weatherData, setweatherData] = useState(null)
     useEffect(() => {
       fetch('/sensor-data')
         .then(response => response.json())
         .then(json => setweatherData(json))
     }, []);
 
+    if(weatherData){
+      console.log('hi')
     let transformedWeatherData = weatherData.map((row) => {
         return {...row, "published": dateStr(row["published"]), "winddirection": windDir(row["winddirection"]) }
     });
@@ -63,13 +65,16 @@ export default function Weather() {
       "soilData": soilData,
       "pressureData":pressureData
     }
-
     return(
-        <>
-            <CardRow allCardData={cardData} />
-            <Charts data={chartsData}/>
-        </>
-    );
+      <>
+          <CardRow allCardData={cardData} />
+          <Charts data={chartsData}/>
+      </>
+  )
+  } else {
+    return null
+  }
+
 }
 
 const CardRow = ({allCardData}) => {
