@@ -382,7 +382,7 @@ const dateStr = (epoch) => {
   const hour = date.getHours();
   let minutes = date.getMinutes();
   if (minutes < 10) {
-    minutes += "0";
+    minutes = "0" + minutes;
   }
   return hour + ":" + minutes;
 };

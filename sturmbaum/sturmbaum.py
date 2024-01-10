@@ -1,9 +1,9 @@
+from datetime import datetime
+from dateutil import tz
 from flask import Blueprint, render_template, jsonify
 import sqlalchemy
 from sturmbaum.db import database
 from sturmbaum.model import SensorData
-from datetime import datetime
-from dateutil import tz
 
 sb = Blueprint("sturmbaum", __name__, template_folder="templates")
 
@@ -25,19 +25,15 @@ def sensor_data():
         hour=0,
         minute=0,
         second=0,
+        tzinfo=tz.tzutc(),
     ).astimezone(pst)
-    today = today.timestamp() - 57600
-    print(today)
+    today = today.timestamp() + 57600
     with database.connect() as conn:
-        """
         stmt = (
             sqlalchemy.select(SensorData)
             .order_by(SensorData.published)
             .filter(SensorData.published > today)
         )
-        """
-        stmt = sqlalchemy.select(SensorData).order_by(SensorData.published)
-        result = conn.execute(stmt).all()
         final = []
         for row in conn.execute(stmt).all():
             final.append(
