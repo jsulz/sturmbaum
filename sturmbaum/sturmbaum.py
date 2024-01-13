@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from dateutil import tz
 from flask import Blueprint, render_template, jsonify
 import sqlalchemy
@@ -17,7 +17,7 @@ def home():
 def sensor_data():
     # @TODO parse request.args so that we can change the SQL query
     pst = tz.gettz("America/Los_Angeles")
-    today_now = datetime.utcnow().date()
+    today_now = datetime.now(pst)
     today = datetime(
         today_now.year,
         today_now.month,
@@ -25,9 +25,9 @@ def sensor_data():
         hour=0,
         minute=0,
         second=0,
-        tzinfo=tz.tzutc(),
-    ).astimezone(pst)
-    today = today.timestamp() + 57600
+        tzinfo=pst,
+    )
+    today = today.timestamp()
     with database.connect() as conn:
         stmt = (
             sqlalchemy.select(SensorData)
