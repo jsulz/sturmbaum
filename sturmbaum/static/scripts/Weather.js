@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import {
   Line,
   LineChart,
-  ReponsiveContainer,
   CartesianGrid,
   XAxis,
   YAxis,
@@ -91,7 +90,11 @@ export default function Weather(props) {
       </>
     );
   } else {
-    return null;
+    return (
+      <>
+        <h2>Weather Loading</h2>
+      </>
+    );
   }
 }
 

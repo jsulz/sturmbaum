@@ -8,6 +8,7 @@
     --bs-body-font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --bs-tertiary-rgb: #434b36;
     --bs-tertiary-rgb-active: #1f6e56;
+    --bs-heading-color: #596447;
     --bs-btn-hover-color: var(--bs-tertiary-rgb-active);
 }
 
