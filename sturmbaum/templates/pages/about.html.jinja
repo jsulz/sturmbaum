@@ -4,6 +4,41 @@ endblock %}
 {% block content %}
 <div class="p-2 mb-4 bg-body-tertiary rounded-3 container-fluid">
     <div class="container-fluid py-5">
+        <p>This is a small weather application written with love of the great outdoors (in this case, my backyard in
+            Woodinville, Washington) and technology. It's supported by a number of boards, sensors, and components from
+            <a href="https://www.sparkfun.com/">Sparkfun</a>:
+        </p>
+        <ul>
+            <li><a href="https://www.sparkfun.com/products/retired/13626">Photon Battery Shield</a></li>
+            <li><a href="https://www.sparkfun.com/products/12885">Sunny Buddy - MPPT Solar Charger</a></li>
+            <li><a href="https://www.sparkfun.com/products/13856">Lithium Ion Battery - 6Ah</a></li>
+            <li><a href="https://www.sparkfun.com/products/15901">Weather Meter Kit</a></li>
+            <li><a href="https://www.sparkfun.com/products/retired/13774">Particle Photon (Headers)</a></li>
+            <li><a href="https://www.sparkfun.com/products/13322">Soil Moisture Sensor</a></li>
+            <li><a href="https://www.sparkfun.com/products/retired/13783">Solar Panel - 6W</a></li>
+            <li><a href="https://www.sparkfun.com/products/retired/13674">Photon Weather Shield</a></li>
+            <li><a href="https://www.sparkfun.com/products/11050">Temperature Sensor - Waterproof (DS18B20)</a></li>
+        </ul>
+        <p>The sensor code is written in C++ and is available <a href="https://github.com/jsulz/paranoid-android">on
+                GitHub</a>.</p>
+        <p>The application serving web requests (<a href="https://github.com/jsulz/sturmbaum">that's this!</a>) is
+            written in Flask with React+Recharts making the
+            frontend look all pretty. The full stack is as follows:</p>
+        <ul>
+            <li><a href="https://cloud.google.com/?hl=en">Google Cloud Platform</a> (specifically <a
+                    href="https://cloud.google.com/run?hl=en">Cloud Run</a>, <a
+                    href="https://cloud.google.com/pubsub?hl=en">Pubsub</a>, <a
+                    href="https://cloud.google.com/functions?hl=en">Cloud Functions</a>, <a
+                    href="https://cloud.google.com/sql?hl=en">Cloud SQL</a>, and <a
+                    href="https://cloud.google.com/artifact-registry">Artifact Registry</a>) providing
+                the computers so this can be accessed from your computer.</li>
+            <li><a href="https://www.docker.com/">Docker</a> making it so that the computer is the same computer
+                everywhere.</li>
+            <li><a href="https://flask.palletsprojects.com/en/3.0.x/">Flask</a> to talk to the Google computers.</li>
+            <li><a href="https://react.dev/">React</a> for making the frontend pretty.</li>
+            <li><a href="https://recharts.org/en-US/">Recharts</a> for making the charts pretty.</li>
+            <li><a href="https://getbootstrap.com/">Bootstrap</a> for making the whole thing pretty.</li>
+        </ul>
     </div>
 </div>
 {% endblock %}

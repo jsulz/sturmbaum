@@ -17,7 +17,8 @@ export default function Weather(props) {
       .then((json) => setweatherData(json));
   }, []);
 
-  if (weatherData) {
+  if (weatherData != null && weatherData.length > 0) {
+    console.log(weatherData);
     let transformedWeatherData = weatherData.map((row) => {
       return {
         ...row,
@@ -345,7 +346,7 @@ const CustomToolTip = ({ active, payload, label }) => {
       <div className="custom-tooltip">
         <p>{payload[0]["payload"]["published"]}</p>
         <p>windspeed: {payload[0]["payload"]["windspeed"]}</p>
-        <p>windspeed: {payload[0]["payload"]["winddirection"]}</p>
+        <p>winddirection: {payload[0]["payload"]["winddirection"]}</p>
       </div>
     );
   }
@@ -365,7 +366,7 @@ const windDir = (direction) => {
   if (direction > 292 && direction < 337) {
     strDir = "SE";
   }
-  if (direction > 337 && direction < 22) {
+  if (direction > 337 || direction < 22) {
     strDir = "S";
   }
   if (direction > 22 && direction < 67) {
