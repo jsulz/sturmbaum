@@ -13,6 +13,11 @@ def home():
     return render_template("pages/home.html.jinja")
 
 
+@sb.route("/about", methods=["GET"])
+def about():
+    return render_template("pages/about.html.jinja")
+
+
 @sb.route("/sensor-data", methods=["GET"])
 def sensor_data():
     # @TODO parse request.args so that we can change the SQL query
