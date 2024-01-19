@@ -24,7 +24,7 @@ COPY . ./
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 # Bring over react dependencies from the build
-COPY --from=build ./app/dist/ ./static/dist
+COPY --from=build ./app/dist/ ./static/js
 # Set up host information
 ENV HOST 0.0.0.0
 EXPOSE 8888
