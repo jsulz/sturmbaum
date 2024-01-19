@@ -2,7 +2,7 @@
 # Get the node image 
 FROM node:21.5-slim as build
 # Set a working directory
-WORKDIR /app/
+WORKDIR /app
 # Copy over the NPM files
 COPY ./sturmbaum/static/package.json ./
 COPY ./sturmbaum/static/package-lock.json ./
@@ -24,7 +24,7 @@ COPY . ./
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 # Bring over react dependencies from the build
-COPY --from=build /app/dist/ ./static/dist
+COPY --from=build ./app/dist/ ./static/dist
 # Set up host information
 ENV HOST 0.0.0.0
 EXPOSE 8888
