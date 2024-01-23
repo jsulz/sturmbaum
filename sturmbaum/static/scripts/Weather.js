@@ -7,6 +7,10 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  Label,
 } from "recharts";
 
 export default function Weather(props) {
@@ -18,7 +22,6 @@ export default function Weather(props) {
   }, []);
 
   if (weatherData != null && weatherData.length > 0) {
-    console.log(weatherData);
     let transformedWeatherData = weatherData.map((row) => {
       return {
         ...row,
@@ -42,6 +45,11 @@ export default function Weather(props) {
 
     const currentRow =
       transformedWeatherData[transformedWeatherData.length - 1];
+
+    const batteryData = {
+      batteryCharge: currentRow["batterycharge"],
+      chargeRemaining: 100.0 - currentRow["batterycharge"],
+    };
 
     const tempCardData = {
       title: currentRow["airtemp"].toFixed(2),
@@ -74,6 +82,7 @@ export default function Weather(props) {
       windCardData: windCardData,
       precipCardData: precipCardData,
       soilCardData: soilCardData,
+      batteryData: batteryData,
     };
 
     const chartsData = {
@@ -122,6 +131,11 @@ const CardRow = ({ allCardData }) => {
         data={allCardData["soilCardData"]}
         type="soil"
       />
+      <Card
+        title="Battery Charge"
+        data={allCardData["batteryData"]}
+        type="battery"
+      />
     </div>
   );
 };
@@ -136,6 +150,10 @@ const Card = ({ title, data, type }) => {
 
   let cardContent = null;
   switch (type) {
+    case "battery":
+      cardTitle = <GaugeChart batteryData={data} />;
+      cardContent = null;
+      break;
     case "temp":
       cardContent = (
         <ul className="list-unstyled mt-3 mb-4">
@@ -298,6 +316,35 @@ const MultiLineChart = ({ title, chartData, stats }) => {
         </LineChart>
       </ResponsiveContainer>
     </>
+  );
+};
+
+const GaugeChart = ({ batteryData }) => {
+  const data = [
+    { value: batteryData["batteryCharge"] },
+    { value: batteryData["chargeRemaining"] },
+  ];
+
+  return (
+    <ResponsiveContainer width="100%" height={200}>
+      <PieChart>
+        <Pie
+          startAngle={180}
+          endAngle={0}
+          innerRadius="55%"
+          data={data}
+          dataKey="value"
+          blendStroke
+          isAnimationActive={false}
+        >
+          <Cell fill="#000" />
+          <Cell fill="#eaeaea" />
+          <Label position="center" style={{ fontSize: "120%" }}>
+            {data[0].value + "%"}
+          </Label>
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
   );
 };
 

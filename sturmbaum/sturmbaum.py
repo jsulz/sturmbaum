@@ -52,6 +52,7 @@ def sensor_data():
                     "soiltemp": row[7],
                     "soilmoisture": row[8],
                     "rainfall": row[9],
+                    "batterycharge": row[10],
                 }
             )
 

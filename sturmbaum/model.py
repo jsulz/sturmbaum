@@ -20,3 +20,4 @@ class SensorData(Base):
     soiltemp: Mapped[float]
     soilmoisture: Mapped[float]
     rainfall: Mapped[float]
+    batterycharge: Mapped[float]
