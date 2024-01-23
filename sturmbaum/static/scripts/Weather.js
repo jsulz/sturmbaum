@@ -70,10 +70,17 @@ export default function Weather(props) {
       unit: "in",
     };
 
-    const soilCardData = {
-      title: [currentRow["soilmoisture"], currentRow["soiltemp"]],
-      moisture_high: getHigh(soilData, "soilmoisture").toFixed(3),
-      temperature_high: getHigh(soilData, "soiltemp").toFixed(3),
+    const soilMoistureCardData = {
+      title: currentRow["soilmoisture"],
+      high: getHigh(soilData, "soilmoisture").toFixed(3),
+      low: getLow(soilData, "soilmoisture").toFixed(3),
+      unit: null,
+    };
+
+    const soilTempCardData = {
+      title: currentRow["soiltemp"],
+      high: getHigh(soilData, "soiltemp").toFixed(3),
+      low: getLow(soilData, "soiltemp").toFixed(3),
       unit: String.fromCharCode(176) + "F",
     };
 
@@ -81,7 +88,8 @@ export default function Weather(props) {
       tempCardData: tempCardData,
       windCardData: windCardData,
       precipCardData: precipCardData,
-      soilCardData: soilCardData,
+      soilMoistureCardData: soilMoistureCardData,
+      soilTempCardData: soilTempCardData,
       batteryData: batteryData,
     };
 
@@ -110,7 +118,7 @@ export default function Weather(props) {
 
 const CardRow = ({ allCardData }) => {
   return (
-    <div className="row row-cols-1 row-cols-md-4 mb-3">
+    <div className="row row-cols-1 row-cols-md-3 mb-3">
       <Card
         title="Current Temperature"
         data={allCardData["tempCardData"]}
@@ -127,9 +135,14 @@ const CardRow = ({ allCardData }) => {
         type="precip"
       />
       <Card
-        title="Current Soil Moisture / Temp"
-        data={allCardData["soilCardData"]}
-        type="soil"
+        title="Current Soil Moisture"
+        data={allCardData["soilMoistureCardData"]}
+        type="soilmoisture"
+      />
+      <Card
+        title="Current Soil Temp"
+        data={allCardData["soilTempCardData"]}
+        type="soiltemp"
       />
       <Card
         title="Battery Charge"
@@ -193,20 +206,32 @@ const Card = ({ title, data, type }) => {
         </ul>
       );
       break;
-    case "soil":
+    case "soilmoisture":
       cardContent = (
         <ul className="list-unstyled mt-3 mb-4">
-          <li>Moisture High: {data["moisture_high"]}</li>
           <li>
-            Temperature High: {data["temperature_high"]} {data["unit"]}
+            High: {data["high"]}
+            {data["unit"]}
+          </li>
+          <li>
+            Low: {data["low"]}
+            {data["unit"]}
           </li>
         </ul>
       );
-      cardTitle = (
-        <h2 className="card-title pricing-card-title">
-          {data["title"][0]} / {data["title"][1]}
-          {data["unit"]}
-        </h2>
+      break;
+    case "soiltemp":
+      cardContent = (
+        <ul className="list-unstyled mt-3 mb-4">
+          <li>
+            High: {data["high"]}
+            {data["unit"]}
+          </li>
+          <li>
+            Low: {data["low"]}
+            {data["unit"]}
+          </li>
+        </ul>
       );
       break;
   }
