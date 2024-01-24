@@ -27,6 +27,7 @@ export default function Weather(props) {
         ...row,
         published: dateStr(row["published"]),
         winddirection: windDir(row["winddirection"]),
+        pressure: convertPressure(row["pressure"]),
       };
     });
 
@@ -461,6 +462,10 @@ const dateStr = (epoch) => {
     minutes = "0" + minutes;
   }
   return hour + ":" + minutes;
+};
+
+const convertPressure = (hPa) => {
+  return (hPa / 3386.389).toFixed(3);
 };
 
 const spliceData = (data, properties) => {
