@@ -109,9 +109,23 @@ export default function Weather(props) {
       </>
     );
   } else {
+    const divStyle = {
+      width: "3rem",
+      height: "3rem",
+      textAlign: "center",
+    };
+    document
+      .getElementById("charts")
+      .setAttribute("style", "text-align:center");
     return (
       <>
-        <h2>Weather Loading</h2>
+        <div
+          class="spinner-border text-secondary"
+          style={divStyle}
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
       </>
     );
   }
